@@ -18,17 +18,17 @@ When you´re dealing with configurations in Azure Functions, you normally use th
 You can use the configuration settings inside of your code like the following:
 
 ```CSharp
-[FunctionName("SampleHttpTrigger")]
-        public IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
-            ILogger log)
-        {
+    [FunctionName("SampleHttpTrigger")]
+    public IActionResult Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+        ILogger log)
+    {
 
-            string configValue1 = Environment.GetEnvironmentVariable("ConfigSetting1");
-            string configValue2 = Environment.GetEnvironmentVariable("ConfigSetting2");    
-            
-            return new OkObjectResult(responseMessage);
-        }
+        string configValue1 = Environment.GetEnvironmentVariable("ConfigSetting1");
+        string configValue2 = Environment.GetEnvironmentVariable("ConfigSetting2");    
+        
+        return new OkObjectResult(responseMessage);
+    }
 ```
 
 All your AppSettings are available as an Environment Variable. It is absolutely fine to do it like this way, but everytime you need a setting from configuration you have to repeat yourself by writing
